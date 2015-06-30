@@ -149,7 +149,7 @@
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "metadata": "floppy/dummy_metadata.json",
-    "mirror": "http://cdn.novell.com/free/h0AOp5AT-18~",
+    "mirror": "./packer_cache",
     "name": "sles-11-sp2",
     "template": "sles-11-sp2-x86_64",
     "version": "2.0.TIMESTAMP"
