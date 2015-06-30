@@ -6,11 +6,16 @@ else
   arch_suffix=x86
 fi
 
+# remove autoyast locks
+rm -f /etc/zypp/locks
+
 oslevel=`grep VERSION /etc/SuSE-release | awk '{ print $3 }'`
 patchlevel=`grep PATCHLEVEL /etc/SuSE-release | awk '{ print $3 }'`
 
 if [ $oslevel == '11' ]; then
-  if [ $patchlevel == '2' ]; then
+  if [ $patchlevel == '1' ]; then
+    repo_ver="11.1.1-1.152"
+  elif [ $patchlevel == '2' ]; then
     repo_ver="11.2.2-1.234"
   elif [ $patchlevel == '3' ]; then
     repo_ver="11.3.3-1.138"
