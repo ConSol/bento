@@ -29,7 +29,7 @@
         "tail -f /var/svc/log/application-auto-installer\\:default.log<enter><wait>"
       ],
       "boot_wait": "5s",
-      "disk_size": 10360,
+      "disk_size": 20000,
       "guest_additions_mode": "attach",
       "guest_os_type": "Solaris11_64",
       "headless": "{{ user `headless` }}",
@@ -91,7 +91,7 @@
         "tail -f /var/svc/log/application-auto-installer\\:default.log<enter><wait>"
       ],
       "boot_wait": "5s",
-      "disk_size": 10360,
+      "disk_size": 20000,
       "guest_os_type": "solaris11-64",
       "headless": "{{ user `headless` }}",
       "http_directory": "http/solaris-11",
