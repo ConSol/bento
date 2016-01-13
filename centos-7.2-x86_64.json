@@ -165,7 +165,7 @@
     "iso_name": "CentOS-7-x86_64-DVD-1511.iso",
     "ks_path": "centos-7.2/ks.cfg",
     "metadata": "floppy/dummy_metadata.json",
-    "mirror": "http://mirrors.kernel.org/centos",
+    "mirror": "http://ftp.tu-chemnitz.de/pub/linux/centos",
     "mirror_directory": "7.2.1511/isos/x86_64",
     "name": "centos-7.2",
     "no_proxy": "{{env `no_proxy`}}",
