@@ -26,13 +26,13 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "1024"
+          "{{ user `memory` }}"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "{{ user `cpus` }}"
         ]
       ],
       "virtualbox_version_file": ".vbox_version",
@@ -61,8 +61,9 @@
       "vm_name": "{{ user `template` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
-        "memsize": "1024",
-        "numvcpus": "1"
+        "ethernet0.pciSlotNumber": "32",
+        "memsize": "{{ user `memory` }}",
+        "numvcpus": "{{ user `cpus` }}"
       }
     },
     {
@@ -83,13 +84,13 @@
           "set",
           "{{.Name}}",
           "--memsize",
-          "1024"
+          "{{ user `memory` }}"
         ],
         [
           "set",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "{{ user `cpus` }}"
         ]
       ],
       "prlctl_version_file": ".prlctl_version",
@@ -107,6 +108,7 @@
       ],
       "boot_wait": "10s",
       "disk_size": 40960,
+      "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -144,7 +146,7 @@
       "scripts": [
         "scripts/common/metadata.sh",
         "scripts/fedora/fix-slow-dns.sh",
-        "scripts/fedora/22-build-tools.sh",
+        "scripts/fedora/build-tools.sh",
         "scripts/common/sshd.sh",
         "scripts/common/vmtools.sh",
         "scripts/common/vagrant.sh",
@@ -158,6 +160,7 @@
     "arch": "64",
     "box_basename": "fedora-23",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
+    "cpus": "1",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
@@ -166,6 +169,7 @@
     "iso_checksum_type": "sha256",
     "iso_name": "Fedora-Server-DVD-x86_64-23.iso",
     "ks_path": "fedora-23/ks.cfg",
+    "memory": "512",
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "http://download.fedoraproject.org/pub/fedora/linux",
     "mirror_directory": "releases/23/Server/x86_64/iso",

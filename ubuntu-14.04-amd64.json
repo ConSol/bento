@@ -47,13 +47,13 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "384"
+          "{{ user `memory` }}"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "{{ user `cpus` }}"
         ]
       ],
       "virtualbox_version_file": ".vbox_version",
@@ -103,8 +103,8 @@
       "vm_name": "{{ user `template` }}",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
-        "memsize": "384",
-        "numvcpus": "1"
+        "memsize": "{{ user `memory` }}",
+        "numvcpus": "{{ user `cpus` }}"
       }
     },
     {
@@ -146,13 +146,13 @@
           "set",
           "{{.Name}}",
           "--memsize",
-          "384"
+          "{{ user `memory` }}"
         ],
         [
           "set",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "{{ user `cpus` }}"
         ]
       ],
       "prlctl_version_file": ".prlctl_version",
@@ -191,6 +191,7 @@
       ],
       "boot_wait": "10s",
       "disk_size": 40960,
+      "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -242,16 +243,18 @@
   "variables": {
     "box_basename": "ubuntu-14.04",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
+    "cpus": "1",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "a3b345908a826e262f4ea1afeb357fd09ec0558cf34e6c9112cead4bb55ccdfb",
+    "iso_checksum": "946a6077af6f5f95a51f82fdc44051c7aa19f9cfc5f737954845a6050543d7c2",
     "iso_checksum_type": "sha256",
-    "iso_name": "ubuntu-14.04.3-server-amd64.iso",
+    "iso_name": "ubuntu-14.04.1-server-amd64.iso",
+    "memory": "512",
     "metadata": "floppy/dummy_metadata.json",
-    "mirror": "http://releases.ubuntu.com",
-    "mirror_directory": "14.04.3",
+    "mirror": "http://old-releases.ubuntu.com/releases",
+    "mirror_directory": "14.04.1",
     "name": "ubuntu-14.04",
     "no_proxy": "{{env `no_proxy`}}",
     "preseed_path": "ubuntu-14.04/preseed.cfg",
@@ -259,4 +262,3 @@
     "version": "2.1.TIMESTAMP"
   }
 }
-
