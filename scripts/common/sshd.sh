@@ -18,3 +18,10 @@ if grep -q -E "^[[:space:]]*GSSAPIAuthentication" "$SSHD_CONFIG"; then
 else
     echo "$GSSAPI" >>"$SSHD_CONFIG"
 fi
+
+PERMITROOTLOGIN="PermitRootLogin yes"
+if grep -q -E "^[[:space:]]*PermitRootLogin" "$SSHD_CONFIG"; then
+    sed -i "s/^\s*PermitRootLogin.*/${PERMITROOTLOGIN}/" "$SSHD_CONFIG"
+else
+    echo "$PERMITROOTLOGIN" >>"$SSHD_CONFIG"
+fi
