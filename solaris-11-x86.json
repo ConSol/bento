@@ -29,7 +29,7 @@
         "tail -f /var/svc/log/application-auto-installer\\:default.log<enter><wait>"
       ],
       "boot_wait": "5s",
-      "disk_size": 20000,
+      "disk_size": "{{user `disk_size`}}",
       "guest_additions_mode": "attach",
       "guest_os_type": "Solaris11_64",
       "headless": "{{ user `headless` }}",
@@ -91,7 +91,7 @@
         "tail -f /var/svc/log/application-auto-installer\\:default.log<enter><wait>"
       ],
       "boot_wait": "5s",
-      "disk_size": 20000,
+      "disk_size": "{{user `disk_size`}}",
       "guest_os_type": "solaris11-64",
       "headless": "{{ user `headless` }}",
       "http_directory": "http/solaris-11",
@@ -133,7 +133,7 @@
         "scripts/common/metadata.sh",
         "scripts/solaris/update.sh",
         "scripts/solaris/vmtools.sh",
-        "scripts/common/vagrant.sh",
+        "scripts/solaris/vagrant.sh",
         "scripts/solaris/minimize.sh"
       ],
       "type": "shell"
@@ -141,11 +141,12 @@
   ],
   "variables": {
     "_DOWNLOAD_SITE": "http://www.oracle.com/technetwork/server-storage/solaris11/downloads/index.html",
-    "_README": "You must download the automated installer iso from the following page, and then place it somewhere that packer can fetch it",
+    "_README": "You must download the automated installer iso from the following page, and then place it in the packer_cache dir",
     "arch": "64",
     "box_basename": "solaris-11.3",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
+    "disk_size": "20000",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "memory": "2048",
