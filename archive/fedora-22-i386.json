@@ -1,28 +1,22 @@
+
 {
   "builders": [
     {
       "boot_command": [
-        "<esc><wait>",
-        "boot -s<wait>",
-        "<enter><wait>",
-        "<wait10><wait10>",
-        "/bin/sh<enter><wait>",
-        "mdmfs -s 100m md1 /tmp<enter><wait>",
-        "mdmfs -s 100m md2 /mnt<enter><wait>",
-        "dhclient -l /tmp/dhclient.lease.em0 em0<enter><wait>",
-        "fetch -o /tmp/install.sh http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `install_path`}} && chmod +x /tmp/install.sh && /tmp/install.sh {{ .Name }}<enter><wait>"
+        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "guest_os_type": "FreeBSD",
+      "guest_os_type": "Fedora",
+      "hard_drive_interface": "sata",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "packer-{{user `template`}}-virtualbox",
-      "shutdown_command": "su -m root -c 'shutdown -p now'",
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -47,32 +41,23 @@
     },
     {
       "boot_command": [
-        "<esc><wait>",
-        "boot -s<wait>",
-        "<enter><wait>",
-        "<wait10><wait10>",
-        "/bin/sh<enter><wait>",
-        "mdmfs -s 100m md1 /tmp<enter><wait>",
-        "mdmfs -s 100m md2 /mnt<enter><wait>",
-        "dhclient -l /tmp/dhclient.lease.em0 em0<enter><wait>",
-        "<wait5>",
-        "fetch -o /tmp/install.sh http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `install_path`}} && chmod +x /tmp/install.sh && /tmp/install.sh {{ .Name }}<enter><wait>"
+        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
-      "guest_os_type": "freebsd",
+      "guest_os_type": "fedora",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
-      "output_directory": "packer-{{user `template`}}-vmare",
-      "shutdown_command": "su -m root -c 'shutdown -p now'",
+      "output_directory": "packer-{{user `template`}}-vmware",
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
-      "tools_upload_flavor": "freebsd",
+      "tools_upload_flavor": "linux",
       "type": "vmware-iso",
       "vm_name": "{{ user `template` }}",
       "vmx_data": {
@@ -83,25 +68,17 @@
     },
     {
       "boot_command": [
-        "<esc><wait>",
-        "boot -s<wait>",
-        "<enter><wait>",
-        "<wait10><wait10>",
-        "/bin/sh<enter><wait>",
-        "mdmfs -s 100m md1 /tmp<enter><wait>",
-        "mdmfs -s 100m md2 /mnt<enter><wait>",
-        "dhclient -l /tmp/dhclient.lease.em0 em0<enter><wait>",
-        "fetch -o /tmp/install.sh http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `install_path`}} && chmod +x /tmp/install.sh && /tmp/install.sh {{ .Name }}<enter><wait>"
+        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
-      "boot_wait": "8s",
+      "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
-      "guest_os_type": "freebsd",
+      "guest_os_type": "fedora-core",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "packer-{{user `template`}}-parallels",
-      "parallels_tools_mode": "disable",
+      "parallels_tools_flavor": "lin",
       "prlctl": [
         [
           "set",
@@ -114,30 +91,10 @@
           "{{.Name}}",
           "--cpus",
           "{{ user `cpus` }}"
-        ],
-        [
-          "set",
-          "{{.Name}}",
-          "--device-set",
-          "cdrom0",
-          "--iface",
-          "ide"
-        ],
-        [
-          "set",
-          "{{.Name}}",
-          "--device-del",
-          "fdd0"
-        ],
-        [
-          "set",
-          "{{.Name}}",
-          "--device-del",
-          "parallel0"
         ]
       ],
       "prlctl_version_file": ".prlctl_version",
-      "shutdown_command": "su -m root -c 'shutdown -p now'",
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -147,17 +104,9 @@
     },
     {
       "boot_command": [
-        "<esc><wait>",
-        "boot -s<wait>",
-        "<enter><wait>",
-        "<wait10><wait10>",
-        "/bin/sh<enter><wait>",
-        "mdmfs -s 100m md1 /tmp<enter><wait>",
-        "mdmfs -s 100m md2 /mnt<enter><wait>",
-        "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait>",
-        "fetch -o /tmp/install.sh http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `install_path`}} && chmod +x /tmp/install.sh && /tmp/install.sh {{ .Name }}<enter><wait>"
+        "<tab> linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
-      "boot_wait": "7s",
+      "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
@@ -165,7 +114,7 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "packer-{{user `template`}}-qemu",
-      "shutdown_command": "su -m root -c 'shutdown -p now'",
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_username": "vagrant",
@@ -177,8 +126,7 @@
   "post-processors": [
     {
       "output": "builds/{{user `box_basename`}}.{{.Provider}}.box",
-      "type": "vagrant",
-      "vagrantfile_template": "vagrantfile_templates/freebsd.rb"
+      "type": "vagrant"
     }
   ],
   "provisioners": [
@@ -188,28 +136,24 @@
       "type": "file"
     },
     {
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant",
-        "http_proxy={{user `http_proxy`}}",
-        "https_proxy={{user `https_proxy`}}",
-        "no_proxy={{user `no_proxy`}}"
-      ],
-      "execute_command": "{{.Vars}} su -m root -c 'sh -eux {{.Path}}'",
+      "environment_vars": [],
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
         "scripts/common/metadata.sh",
-        "scripts/freebsd/update.sh",
-        "scripts/freebsd/postinstall.sh",
-        "scripts/freebsd/sudoers.sh",
+        "scripts/fedora/fix-slow-dns.sh",
+        "scripts/common/sshd.sh",
+        "scripts/fedora/build-tools.sh",
+        "scripts/common/vmtools.sh",
         "scripts/common/vagrant.sh",
-        "scripts/freebsd/vmtools.sh",
-        "scripts/freebsd/cleanup.sh",
-        "scripts/freebsd/minimize.sh"
+        "scripts/fedora/cleanup.sh",
+        "scripts/common/minimize.sh"
       ],
       "type": "shell"
     }
   ],
   "variables": {
-    "box_basename": "freebsd-10.2-i386",
+    "arch": "32",
+    "box_basename": "fedora-22-i386",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "40960",
@@ -217,17 +161,17 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "install_path": "freebsd-10/install.sh",
-    "iso_checksum": "0e7094ae9f4f79d8955f193a1f2f5ab4f8b300e57eccd3b9bd959951ee079020",
+    "iso_checksum": "5e3dfdff30667f3339d8b4e6ac0651c2e00c9417987848bef772cb92dbc823a5",
     "iso_checksum_type": "sha256",
-    "iso_name": "FreeBSD-10.2-RELEASE-i386-disc1.iso",
+    "iso_name": "Fedora-Server-DVD-i386-22.iso",
+    "ks_path": "fedora-latest/ks.cfg",
     "memory": "512",
     "metadata": "floppy/dummy_metadata.json",
-    "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
-    "mirror_directory": "releases/i386/i386/ISO-IMAGES/10.2",
-    "name": "freebsd-10.2-i386",
+    "mirror": "http://download.fedoraproject.org/pub/fedora/linux",
+    "mirror_directory": "releases/22/Server/i386/iso",
+    "name": "fedora-22-i386",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "freebsd-10.2-i386",
-    "version": "2.1.TIMESTAMP"
+    "template": "fedora-22-i386",
+    "version": "2.0.TIMESTAMP"
   }
 }

@@ -7,7 +7,7 @@
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-      "guest_os_type": "Fedora_64",
+      "guest_os_type": "Fedora",
       "hard_drive_interface": "sata",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
@@ -44,7 +44,7 @@
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
-      "guest_os_type": "fedora-64",
+      "guest_os_type": "fedora",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
@@ -135,18 +135,13 @@
       "type": "file"
     },
     {
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant",
-        "http_proxy={{user `http_proxy`}}",
-        "https_proxy={{user `https_proxy`}}",
-        "no_proxy={{user `no_proxy`}}"
-      ],
+      "environment_vars": [],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
         "scripts/common/metadata.sh",
         "scripts/fedora/fix-slow-dns.sh",
-        "scripts/common/sshd.sh",
         "scripts/fedora/build-tools.sh",
+        "scripts/common/sshd.sh",
         "scripts/common/vmtools.sh",
         "scripts/common/vagrant.sh",
         "scripts/fedora/cleanup.sh",
@@ -156,8 +151,8 @@
     }
   ],
   "variables": {
-    "arch": "64",
-    "box_basename": "fedora-22",
+    "arch": "32",
+    "box_basename": "fedora-24-i386",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "40960",
@@ -165,17 +160,17 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "b2acfa7c7c6b5d2f51d3337600c2e52eeaa1a1084991181c28ca30343e52e0df",
+    "iso_checksum": "93c0bfe6e6bf23ca22cc1a85636ed15834336ee40a57bfe374f0044ad2d864b0",
     "iso_checksum_type": "sha256",
-    "iso_name": "Fedora-Server-DVD-x86_64-22.iso",
-    "ks_path": "fedora-22/ks.cfg",
+    "iso_name": "Fedora-Server-dvd-i386-24-1.2.iso",
+    "ks_path": "fedora-latest/ks.cfg",
     "memory": "512",
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "http://download.fedoraproject.org/pub/fedora/linux",
-    "mirror_directory": "releases/22/Server/x86_64/iso",
-    "name": "fedora-22",
+    "mirror_directory": "releases/24/Server/i386/iso",
+    "name": "fedora-24-i386",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "fedora-22-x86_64",
+    "template": "fedora-24-i386",
     "version": "2.0.TIMESTAMP"
   }
 }

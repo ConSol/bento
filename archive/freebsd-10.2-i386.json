@@ -3,10 +3,6 @@
     {
       "boot_command": [
         "<esc><wait>",
-        "load geom_mbr<wait>",
-        "<enter><wait>",
-        "load zfs<wait>",
-        "<enter><wait>",
         "boot -s<wait>",
         "<enter><wait>",
         "<wait10><wait10>",
@@ -52,10 +48,6 @@
     {
       "boot_command": [
         "<esc><wait>",
-        "load geom_mbr<wait>",
-        "<enter><wait>",
-        "load zfs<wait>",
-        "<enter><wait>",
         "boot -s<wait>",
         "<enter><wait>",
         "<wait10><wait10>",
@@ -92,10 +84,6 @@
     {
       "boot_command": [
         "<esc><wait>",
-        "load geom_mbr<wait>",
-        "<enter><wait>",
-        "load zfs<wait>",
-        "<enter><wait>",
         "boot -s<wait>",
         "<enter><wait>",
         "<wait10><wait10>",
@@ -160,10 +148,6 @@
     {
       "boot_command": [
         "<esc><wait>",
-        "load geom_mbr<wait>",
-        "<enter><wait>",
-        "load zfs<wait>",
-        "<enter><wait>",
         "boot -s<wait>",
         "<enter><wait>",
         "<wait10><wait10>",
@@ -225,7 +209,7 @@
     }
   ],
   "variables": {
-    "box_basename": "freebsd-9.3-i386",
+    "box_basename": "freebsd-10.2-i386",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "40960",
@@ -233,17 +217,17 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "install_path": "freebsd-9.3/install.sh",
-    "iso_checksum": "cab6aad9c3d5ea6a3fb4059f808225c67f1edaea730c555a86a9707ac41ba75d",
+    "install_path": "freebsd-10/install.sh",
+    "iso_checksum": "0e7094ae9f4f79d8955f193a1f2f5ab4f8b300e57eccd3b9bd959951ee079020",
     "iso_checksum_type": "sha256",
-    "iso_name": "FreeBSD-9.3-RELEASE-i386-disc1.iso",
+    "iso_name": "FreeBSD-10.2-RELEASE-i386-disc1.iso",
     "memory": "512",
     "metadata": "floppy/dummy_metadata.json",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
-    "mirror_directory": "releases/i386/i386/ISO-IMAGES/9.3",
-    "name": "freebsd-9.3",
+    "mirror_directory": "releases/i386/i386/ISO-IMAGES/10.2",
+    "name": "freebsd-10.2-i386",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "freebsd-9.3-i386",
+    "template": "freebsd-10.2-i386",
     "version": "2.1.TIMESTAMP"
   }
 }
