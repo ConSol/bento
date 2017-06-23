@@ -9,7 +9,7 @@ public:
     '5.11':
     - x86_64
     - i386
-    '6.8':
+    '6.9':
     - x86_64
     - i386
     '7.3':
@@ -18,19 +18,17 @@ public:
     '7.11':
     - amd64
     - i386
-    '8.6':
+    '8.7':
     - amd64
     - i386
+    '9':
+    - amd64
   fedora:
-    '23':
-    - x86_64
     '24':
     - x86_64
     '25':
     - x86_64
   freebsd:
-    '9.3':
-    - amd64
     '10.3':
     - amd64
     '11.0':
@@ -38,10 +36,6 @@ public:
   omnios:
     r151018:
     - amd64
-  opensuse:
-    '13.2':
-    - x86_64
-    - i386
   opensuse-leap:
     '42.2':
     - x86_64
@@ -49,7 +43,7 @@ public:
     '5.11':
     - x86_64
     - i386
-    '6.8':
+    '6.9':
     - x86_64
     - i386
     '7.3':
@@ -65,6 +59,9 @@ public:
     - amd64
     - i386
     '16.10':
+    - amd64
+    - i386
+    '17.04':
     - amd64
     - i386
 
@@ -83,12 +80,9 @@ broken:
   - omnios-r151018-vmware-iso
   - omnios-r151018-parallels-iso
   - opensuse-leap-42.1-x86_64-parallels-iso
-  - opensuse-13.2-i386-vmware-iso
-  - opensuse-13.2-x86_64-vmware-iso
-  - centos-5.11-x86_64-virtualbox-iso
-  - centos-5.11-i386-virtualbox-iso
 
 no_shared_folder:
+  - freebsd-11.0-amd64-all
   - freebsd-10.3-amd64-all
   - freebsd-9.3-amd64-all
   - omnios-r151018-all

@@ -246,7 +246,6 @@
       ],
       "type": "shell"
     }
-
   ],
   "variables": {
     "box_basename": "ubuntu-16.10",
@@ -266,8 +265,9 @@
     "mirror_directory": "16.10",
     "name": "ubuntu-16.10",
     "no_proxy": "{{env `no_proxy`}}",
-    "preseed_path": "ubuntu-15.10/preseed.cfg",
+    "preseed_path": "ubuntu-16.04/preseed.cfg",
     "template": "ubuntu-16.10-amd64",
     "version": "2.1.TIMESTAMP"
   }
 }
+

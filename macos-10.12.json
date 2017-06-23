@@ -26,7 +26,7 @@
         "hpet0.present": "TRUE",
         "ich7m.present": "TRUE",
         "keyboardAndMouseProfile": "macProfile",
-        "memsize": "{{ user `memory` }}",
+        "memsize": "{{ user `memsize` }}",
         "numvcpus": "{{ user `cpus` }}",
         "smc.present": "TRUE",
         "usb.present": "TRUE"
@@ -102,7 +102,7 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "{{ user `memory` }}"
+          "{{ user `memsize` }}"
         ],
         [
           "modifyvm",
@@ -163,9 +163,24 @@
       "output_directory": "packer-{{user `template`}}-parallels",
       "parallels_tools_flavor": "mac",
       "prlctl": [
-        ["set", "{{.Name}}", "--memsize", "{{ user `memory` }}"],
-        ["set", "{{.Name}}", "--cpus", "{{ user `cpus` }}"],
-        ["set", "{{.Name}}", "--on-window-close", "keep-running"]
+        [
+          "set",
+          "{{.Name}}",
+          "--memsize",
+          "{{ user `memsize` }}"
+        ],
+        [
+          "set",
+          "{{.Name}}",
+          "--cpus",
+          "{{ user `cpus` }}"
+        ],
+        [
+          "set",
+          "{{.Name}}",
+          "--on-window-close",
+          "keep-running"
+        ]
       ],
       "shutdown_command": "echo 'vagrant'| sudo -S shutdown -h now",
       "ssh_password": "vagrant",
@@ -224,7 +239,7 @@
     "iso_checksum": "__unset_iso_checksum__",
     "iso_checksum_type": "md5",
     "iso_url": "http://YOU-MUST-PROVIDE-YOUR-OWN-DMG.sorry",
-    "memory": "2048",
+    "memsize": "2048",
     "metadata": "floppy/dummy_metadata.json",
     "name": "macos-10.12",
     "no_proxy": "{{env `no_proxy`}}",
@@ -232,3 +247,4 @@
     "version": "2.1.TIMESTAMP"
   }
 }
+
